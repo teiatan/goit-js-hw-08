@@ -2,6 +2,7 @@
 import { galleryItems } from './gallery-items';
 // Change code below this line
 import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryContainer = document.querySelector(`.gallery`);
 
@@ -12,11 +13,11 @@ const makeGalleryCard = ({original, preview, description}) => `
 `;
 const galleryItemsEl = galleryItems.map(makeGalleryCard);
 galleryContainer.insertAdjacentHTML(`afterbegin`, galleryItemsEl.join(""));
-new SimpleLightbox('.gallery a'/* , {
+new SimpleLightbox('.gallery__item', {
     captions: true,
     captionSelector: 'img',
     captionPosition: 'bottom',
     captionType: 'attr',
     captionsData: 'alt',
     captionDelay: 250,
-    } */);
+    });
