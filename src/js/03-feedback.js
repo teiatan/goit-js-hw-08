@@ -35,3 +35,6 @@ function loadForm() {
     refs.message.value = loadData.message;
   }
 }
+
+refs.email.setAttribute('required', "");
+refs.message.setAttribute('required', "");
