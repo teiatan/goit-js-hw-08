@@ -30,6 +30,7 @@ function submitForm(e) {
   console.log('Storage:', JSON.parse(localStorage.getItem(STORAGE_KEY)));
   formData = { email: '', message: '' };
   localStorage.removeItem(STORAGE_KEY);
+  formData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || { email: '', message: '' };
 }
 
 function loadForm() {
