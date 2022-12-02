@@ -8,7 +8,8 @@ const refs = {
     message: document.querySelector('[name="message"]'),
 };
 
-const formData = { email: '', message: '' };
+let formData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || { email: '', message: '' };
+console.log(formData);
 
 refs.form.addEventListener('input', throttle(saveForm, 500));
 refs.form.addEventListener('submit', submitForm);
@@ -16,15 +17,18 @@ refs.form.addEventListener('submit', submitForm);
 loadForm();
 
 function saveForm(e) {
+  
   formData[e.target.name] = e.target.value;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
   console.log(formData);
 }
 
 function submitForm(e) {
+  console.clear();
   e.preventDefault();
   e.target.reset();
   console.log('Storage:', JSON.parse(localStorage.getItem(STORAGE_KEY)));
+  formData = { email: '', message: '' };
   localStorage.removeItem(STORAGE_KEY);
 }
 
